@@ -1,0 +1,48 @@
+ext {
+
+    /**
+     * Versions of app tools, plugins and libraries
+     */
+    versions = [:]
+
+}
+
+/**
+ * Android
+ */
+versions += [
+    code      : 1,
+    name      : '0.0.1',
+
+    minSdk    : 22,
+    targetSdk : 27,
+    buildTools: '27.0.3'
+]
+
+/**
+ * Plugins
+ */
+versions += [
+    gradle: '3.1.0',
+    kotlin: '1.2.41'
+]
+
+/**
+ * Libraries
+ */
+versions += [
+    support        : '27.1.0',
+    design         : '1.1.1',
+    picasso        : '2.71828',
+    dagger         : '2.16',
+    rxjava         : '2.2.0',
+    auto_factory   : '1.0-beta5',
+    pager_indicator: '1.0.9'
+]
+
+/**
+ * Test libraries
+ */
+versions += [
+    junit: '4.12'
+]
