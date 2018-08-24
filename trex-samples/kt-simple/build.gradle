@@ -3,4 +3,8 @@ apply from: configs.kotlin
 dependencies {
     implementation project(':trex-lib')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+
+    testImplementation "junit:junit:$versions.junit"
+    testImplementation "org.mockito:mockito-core:$versions.mockito"
+    testImplementation "org.assertj:assertj-core:$versions.assertj"
 }
