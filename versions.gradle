@@ -17,7 +17,7 @@ versions += [
  * Plugins
  */
 versions += [
-    kotlin: '1.2.50'
+    kotlin: '1.2.61'
 ]
 
 /**
