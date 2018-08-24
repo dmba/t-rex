@@ -1,23 +1,26 @@
 buildscript {
-    apply from: 'versions.gradle'
+    evaluationDependsOn ':trex-configs'
+
+    apply from: configs.dependencies
 
     repositories {
         jcenter()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        // Check latest version of dependencies, task: dependencyUpdates
+        classpath gradlePlugins.gradleVersions
+
+        // Analyse builds to profile
+        classpath gradlePlugins.buildScan
     }
 }
 
-plugins {
-    id 'com.gradle.build-scan' version '1.16'
-}
+apply from: configs.buildScan
 
 allprojects {
     repositories {
         jcenter()
     }
-}
-
-buildScan {
-    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
-    publishAlways()
 }

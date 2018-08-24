@@ -1,0 +1,11 @@
+rootProject.ext {
+
+    configs = [
+
+        dependencies: "$projectDir/dependencies/index.gradle",
+
+        buildScan   : "$projectDir/buildscan/index.gradle"
+
+    ]
+
+}
