@@ -1,0 +1,15 @@
+apply from: 'versions.gradle'
+
+buildscript {
+    apply from: 'versions.gradle'
+
+    repositories {
+        jcenter()
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
