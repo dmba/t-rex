@@ -6,15 +6,17 @@ import org.junit.Test
 class LibraryTest {
 
     @Test
-    fun `test some library method`() {
+    fun testMyLanguage() {
         // Given
         val classUnderTest = Library()
 
         // When
-        val result = classUnderTest.someLibraryMethod()
+        val language = classUnderTest.kotlinLanguage()
 
         // Then
-        assertThat(result).isTrue()
+        assertThat(language).isNotNull()
+        assertThat(language.name).isEqualTo("Kotlin")
+        assertThat(language.hotness).isEqualTo(10)
     }
 
 }
