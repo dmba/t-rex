@@ -1,0 +1,2 @@
+include ':trex-lib'
+include ':trex-samples:kt-simple'
