@@ -12,8 +12,5 @@ compileTestKotlin {
 
 dependencies {
     implementation project(':trex-lib')
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-}
-repositories {
-    mavenCentral()
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
 }
