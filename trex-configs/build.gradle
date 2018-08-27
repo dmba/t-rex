@@ -2,11 +2,13 @@ rootProject.ext {
 
     configs = [
 
-        dependencies: "$projectDir/dependencies/index.gradle",
+        dependencies     : "$projectDir/dependencies/index.gradle",
 
-        dependencyUpdates   : "$projectDir/dependencyUpdates/index.gradle",
+        dependencyUpdates: "$projectDir/dependencyUpdates/index.gradle",
 
-        buildScan   : "$projectDir/buildscan/index.gradle"
+        buildScan        : "$projectDir/buildscan/index.gradle",
+
+        dokka            : "$projectDir/dokka/index.gradle"
 
     ]
 

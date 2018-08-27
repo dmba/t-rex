@@ -1,0 +1,12 @@
+apply plugin: 'org.jetbrains.dokka'
+
+final dokkaReportsDirectory = "$buildDir/javadoc"
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = dokkaReportsDirectory
+}
+
+afterEvaluate {
+    println "$project.name dokka:\nfile://$dokkaReportsDirectory/$project.name/index.html"
+}

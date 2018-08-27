@@ -14,6 +14,9 @@ buildscript {
 
         // Analyse builds to profile
         classpath gradlePlugins.buildScan
+
+        // Documentation engine for kotlin, task: dokka
+        classpath gradlePlugins.dokka
     }
 }
 

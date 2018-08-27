@@ -1,1 +1,1 @@
-apply plugin: "com.github.ben-manes.versions"
+apply plugin: 'com.github.ben-manes.versions'

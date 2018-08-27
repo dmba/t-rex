@@ -58,7 +58,8 @@ versions += [
  */
 gradlePlugins += [
     gradleVersions: "com.github.ben-manes:gradle-versions-plugin:$versions.gradleVersions",
-    buildScan     : "com.gradle:build-scan-plugin:$versions.buildScan"
+    buildScan     : "com.gradle:build-scan-plugin:$versions.buildScan",
+    dokka         : "org.jetbrains.dokka:dokka-gradle-plugin:$versions.dokka"
 ]
 
 /**
