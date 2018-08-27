@@ -8,3 +8,10 @@ dokka {
         println "Dokka for $project.name:\nfile://$outputDirectory/$project.name/index.html"
     }
 }
+
+task dokkaJar(type: Jar) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    description = "Assembles Kotlin docs with Dokka"
+    classifier = "javadoc"
+    from(dokka)
+}

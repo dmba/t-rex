@@ -28,6 +28,13 @@ ext {
 }
 
 /**
+ * T-ReX library version
+ */
+versions += [
+    trex: '0.0.1'
+]
+
+/**
  * Plugins versions
  */
 versions += [
