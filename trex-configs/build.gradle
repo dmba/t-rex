@@ -4,6 +4,8 @@ rootProject.ext {
 
         dependencies: "$projectDir/dependencies/index.gradle",
 
+        dependencyUpdates   : "$projectDir/dependencyUpdates/index.gradle",
+
         buildScan   : "$projectDir/buildscan/index.gradle"
 
     ]

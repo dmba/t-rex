@@ -17,10 +17,12 @@ buildscript {
     }
 }
 
-apply from: configs.buildScan
-
 allprojects {
     repositories {
         jcenter()
     }
 }
+
+apply from: configs.buildScan
+
+apply from: configs.dependencyUpdates
