@@ -14,6 +14,8 @@ rootProject.ext {
 
         dokka            : configDir('dokka'),
 
+        maven_publish    : configDir('maven-publish'),
+
     ]
 
 }
