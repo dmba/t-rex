@@ -10,6 +10,8 @@ import io.reactivex.subjects.Subject
  */
 open class Store<A, S> constructor(
 
+    internal val schedulers: TReXSchedulers,
+
     initialState: S,
 
     internal val reducer: Reducer<A, S>,
@@ -34,6 +36,7 @@ open class Store<A, S> constructor(
      */
     fun dispatch(action: A) = Completable.fromAction { rootDispatcher(action) }
         .onErrorComplete()
+        .with(schedulers)
         .subscribe()
 
     /**
@@ -41,6 +44,7 @@ open class Store<A, S> constructor(
      */
     fun subscribe(onNext: (state: S) -> Unit,
                   onError: (error: Throwable) -> Unit = {}): Disposable = stateSubject
+        .with(schedulers)
         .subscribe(onNext, onError)
 
 }
