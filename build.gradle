@@ -9,11 +9,14 @@ buildscript {
     }
 
     dependencies {
-        // Check latest version of dependencies, task: dependencyUpdates
-        classpath gradlePlugins.gradleVersions
+        // Gradle kotlin plugin
+        classpath gradlePlugins.kotlin
 
         // Analyse builds to profile
         classpath gradlePlugins.buildScan
+
+        // Check latest version of dependencies, task: dependencyUpdates
+        classpath gradlePlugins.gradleVersions
 
         // Documentation engine for kotlin, task: dokka
         classpath gradlePlugins.dokka

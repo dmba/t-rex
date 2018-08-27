@@ -1,14 +1,18 @@
+final configDir = { configName -> "$projectDir/$configName/index.gradle" }
+
 rootProject.ext {
 
     configs = [
 
-        dependencies     : "$projectDir/dependencies/index.gradle",
+        kotlin           : configDir('kotlin'),
 
-        dependencyUpdates: "$projectDir/dependencyUpdates/index.gradle",
+        buildScan        : configDir('buildscan'),
 
-        buildScan        : "$projectDir/buildscan/index.gradle",
+        dependencies     : configDir('dependencies'),
 
-        dokka            : "$projectDir/dokka/index.gradle"
+        dependencyUpdates: configDir('dependencyUpdates'),
+
+        dokka            : configDir('dokka'),
 
     ]
 
