@@ -19,3 +19,6 @@ script:
   - ./gradlew clean build
   - ./gradlew check
   - ./gradlew codeCoverageReport
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
