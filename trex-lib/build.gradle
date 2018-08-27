@@ -1,5 +1,6 @@
 apply from: configs.kotlin
 apply from: configs.dokka
+apply from: configs.jacoco
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"

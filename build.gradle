@@ -20,6 +20,9 @@ buildscript {
 
         // Documentation engine for kotlin, task: dokka
         classpath gradlePlugins.dokka
+
+        // Jacoco test coverage plugin, task: codeCoverageReport
+        classpath gradlePlugins.jacoco
     }
 }
 
