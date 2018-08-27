@@ -48,7 +48,8 @@ versions += [
  * Libraries versions
  */
 versions += [
-    rxjava: '2.2.1'
+    rxjava: '2.2.1',
+    dagger: '2.17',
 ]
 
 /**
