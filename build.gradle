@@ -1,13 +1,26 @@
 buildscript {
-    apply from: 'versions.gradle'
+    evaluationDependsOn ':trex-configs'
+
+    apply from: configs.dependencies
 
     repositories {
         jcenter()
+        gradlePluginPortal()
     }
-}
 
-plugins {
-    id 'com.gradle.build-scan' version '1.16'
+    dependencies {
+        // Gradle kotlin plugin
+        classpath gradlePlugins.kotlin
+
+        // Analyse builds to profile
+        classpath gradlePlugins.buildScan
+
+        // Check latest version of dependencies, task: dependencyUpdates
+        classpath gradlePlugins.gradleVersions
+
+        // Documentation engine for kotlin, task: dokka
+        classpath gradlePlugins.dokka
+    }
 }
 
 allprojects {
@@ -16,8 +29,6 @@ allprojects {
     }
 }
 
-buildScan {
-    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
-    publishAlways()
-}
+apply from: configs.buildScan
+
+apply from: configs.dependencyUpdates

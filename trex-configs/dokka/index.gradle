@@ -1,0 +1,10 @@
+apply plugin: 'org.jetbrains.dokka'
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+
+    doLast {
+        println "Dokka for $project.name:\nfile://$outputDirectory/$project.name/index.html"
+    }
+}

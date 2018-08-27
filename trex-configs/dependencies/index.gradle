@@ -1,0 +1,82 @@
+ext {
+
+    /**
+     * Versions of library tools, plugins and libraries
+     */
+    versions = [:]
+
+    /**
+     * Library plugins
+     */
+    gradlePlugins = [:]
+
+    /**
+     * Library release libraries
+     */
+    libraries = [:]
+
+    /**
+     * Library debug only libraries
+     */
+    devLibraries = [:]
+
+    /**
+     * Test libraries
+     */
+    testLibraries = [:]
+
+}
+
+/**
+ * Plugins versions
+ */
+versions += [
+    kotlin        : '1.2.61',
+    gradleVersions: '0.20.0',
+    buildScan     : '1.16',
+    dokka         : '0.9.17'
+]
+
+/**
+ * Libraries versions
+ */
+versions += [
+    rxjava: '2.2.1'
+]
+
+/**
+ * Test libraries versions
+ */
+versions += [
+    junit  : '4.12',
+    mockito: '2.21.0',
+    assertj: '3.11.0'
+]
+
+/**
+ * Plugins
+ */
+gradlePlugins += [
+    kotlin     : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+    buildScan     : "com.gradle:build-scan-plugin:$versions.buildScan",
+    gradleVersions: "com.github.ben-manes:gradle-versions-plugin:$versions.gradleVersions",
+    dokka         : "org.jetbrains.dokka:dokka-gradle-plugin:$versions.dokka"
+]
+
+/**
+ * Libraries
+ */
+libraries += [
+    rxjava: "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+]
+
+/**
+ * Test libraries
+ */
+testLibraries += [
+    junit  : "junit:junit:$versions.junit",
+
+    assertj: "org.assertj:assertj-core:$versions.assertj",
+
+    mockito: "org.mockito:mockito-core:$versions.mockito"
+]
