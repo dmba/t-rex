@@ -5,7 +5,7 @@ import io.reactivex.Scheduler
 /**
  *
  */
-open class TReXSchedulers(
+class TReXSchedulers(
     /**
      *
      */

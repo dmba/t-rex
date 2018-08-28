@@ -75,7 +75,10 @@ gradlePlugins += [
  * Libraries
  */
 libraries += [
-    rxjava: "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+    kotlinStdLib: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+    rxjava      : "io.reactivex.rxjava2:rxjava:$versions.rxjava",
+    dagger      : "com.google.dagger:dagger:$versions.dagger",
+    daggerApt   : "com.google.dagger:dagger-compiler:$versions.dagger"
 ]
 
 /**
@@ -83,8 +86,6 @@ libraries += [
  */
 testLibraries += [
     junit  : "junit:junit:$versions.junit",
-
     assertj: "org.assertj:assertj-core:$versions.assertj",
-
     mockito: "org.mockito:mockito-core:$versions.mockito"
 ]

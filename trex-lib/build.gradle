@@ -3,10 +3,10 @@ apply from: configs.dokka
 apply from: configs.maven_publish
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
-    implementation "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+    implementation libraries.kotlinStdLib
+    implementation libraries.rxjava
 
-    testImplementation "junit:junit:$versions.junit"
-    testImplementation "org.mockito:mockito-core:$versions.mockito"
-    testImplementation "org.assertj:assertj-core:$versions.assertj"
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.mockito
+    testImplementation testLibraries.assertj
 }
