@@ -1,60 +1,32 @@
 package me.dmba.trex.sample.simplekt
 
-import io.reactivex.Observable.fromArray
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
-import me.dmba.trex.TReXSchedulers
-import me.dmba.trex.sample.simplekt.redux.AppStore
-import me.dmba.trex.sample.simplekt.redux.middleware.ApiMiddleware
-import me.dmba.trex.sample.simplekt.redux.middleware.LoggingMiddleware
-import me.dmba.trex.sample.simplekt.redux.reducers.AppReducer
-import me.dmba.trex.sample.simplekt.redux.reducers.CountReducer
-import me.dmba.trex.sample.simplekt.redux.reducers.FavReducer
-import me.dmba.trex.sample.simplekt.redux.state.*
-import me.dmba.trex.sample.simplekt.utils.ImmediateScheduler
+import me.dmba.trex.sample.simplekt.di.AppComponent
+import me.dmba.trex.sample.simplekt.di.DaggerAppComponent
+import me.dmba.trex.sample.simplekt.redux.state.ApiAction
+import me.dmba.trex.sample.simplekt.redux.state.AppState
+import me.dmba.trex.sample.simplekt.redux.state.CountAction
+import me.dmba.trex.sample.simplekt.redux.state.FavAction
 import me.dmba.trex.sample.simplekt.utils.plusAssign
 
 /**
  *
  */
 fun main(args: Array<String>) {
-    val store = AppStore(
+    DaggerAppComponent
+        .create()
+        .apply(::run)
+}
 
-        TReXSchedulers(
-            back = ImmediateScheduler(),
-            main = Schedulers.newThread()
-        ),
-
-        AppState(
-            countState = CountState(
-                value = 0
-            ),
-            favState = FavState(
-                isFav = false
-            ),
-            errorState = ErrorState(
-                errors = emptyList()
-            )
-        ),
-
-        AppReducer(
-            CountReducer(),
-            FavReducer()
-        ),
-
-        LoggingMiddleware(
-            doLog = false
-        ),
-
-        ApiMiddleware()
-    )
-
-    // FUN
+/**
+ *
+ */
+fun run(component: AppComponent) = with(component) {
     val subscriptions = CompositeDisposable()
 
     subscriptions += store.subscribe(::renderView, ::handleError)
 
-    fromArray(
+    listOf(
 
         CountAction.Add(3),
 

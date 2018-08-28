@@ -1,5 +1,6 @@
 package me.dmba.trex.sample.simplekt.redux
 
+import dagger.Reusable
 import me.dmba.trex.Store
 import me.dmba.trex.TReXSchedulers
 import me.dmba.trex.sample.simplekt.redux.middleware.ApiMiddleware
@@ -12,6 +13,7 @@ import javax.inject.Inject
 /**
  *
  */
+@Reusable
 class AppStore @Inject constructor(
 
     schedulers: TReXSchedulers,

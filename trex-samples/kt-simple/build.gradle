@@ -9,4 +9,6 @@ dependencies {
     testImplementation "junit:junit:$versions.junit"
     testImplementation "org.mockito:mockito-core:$versions.mockito"
     testImplementation "org.assertj:assertj-core:$versions.assertj"
+
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
 }
