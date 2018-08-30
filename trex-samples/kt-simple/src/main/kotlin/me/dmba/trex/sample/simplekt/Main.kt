@@ -24,7 +24,7 @@ fun main(args: Array<String>) {
 fun run(component: AppComponent) = with(component) {
     val subscriptions = CompositeDisposable()
 
-    subscriptions += store.subscribe(::renderView, ::handleError)
+    subscriptions += store.subscribe(::renderView)
 
     listOf(
 
@@ -34,7 +34,7 @@ fun run(component: AppComponent) = with(component) {
 
         FavAction.MakeFav(),
 
-        ApiAction.ProduceError(),
+        ApiAction.ProduceError,
 
         CountAction.Add(3),
 
@@ -42,13 +42,13 @@ fun run(component: AppComponent) = with(component) {
 
         CountAction.Sub(2),
 
-        ApiAction.ProduceError(),
+        ApiAction.ProduceError,
 
         CountAction.Sub(2),
 
         CountAction.Sub(2),
 
-        ApiAction.ProduceError(),
+        ApiAction.ProduceError,
 
         CountAction.Sub(2),
 
@@ -63,8 +63,3 @@ fun run(component: AppComponent) = with(component) {
  *
  */
 fun renderView(state: AppState) = println("#view: $state")
-
-/**
- *
- */
-fun handleError(error: Throwable) = println("\t!ERROR: $error")

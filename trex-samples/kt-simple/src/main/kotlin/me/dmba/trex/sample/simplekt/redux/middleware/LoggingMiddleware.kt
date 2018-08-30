@@ -13,9 +13,9 @@ import javax.inject.Inject
 class LoggingMiddleware @Inject constructor() : Middleware<AppAction, AppState> {
 
     override fun dispatch(action: AppAction, store: Store<AppAction, AppState>, next: Next<AppAction>) {
-        println("APP : ${Thread.currentThread()} before [$action] >> ${store.state}")
+        println("APP : ${Thread.currentThread()} before [$action] >> ${store.first}")
         next(action)
-        println("APP : ${Thread.currentThread()} after  [$action] << ${store.state}")
+        println("APP : ${Thread.currentThread()} after  [$action] << ${store.first}")
     }
 
 }
