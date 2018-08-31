@@ -31,6 +31,6 @@ sealed class CountAction : AppAction() {
  */
 sealed class ApiAction : AppAction() {
 
-    class ProduceError : ApiAction()
+    object ProduceError : ApiAction()
 
 }

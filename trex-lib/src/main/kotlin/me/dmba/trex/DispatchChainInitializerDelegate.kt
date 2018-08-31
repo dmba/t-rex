@@ -10,17 +10,17 @@ internal class DispatchChainInitializerDelegate<A, S> {
     /**
      *
      */
-    operator fun getValue(store: Store<A, S>, property: KProperty<*>): (A) -> Unit {
-        return store.middlewares
+    operator fun getValue(store: Store<A, S>, property: KProperty<*>): (A) -> Unit = with(store) {
+        return middlewares
             .reversed()
-            .fold(provideReducerDispatcher(store), provideMiddlewareDispatcher(store))
+            .fold(provideReducerDispatcher(this), provideMiddlewareDispatcher(this))
     }
 
     /**
      *
      */
-    internal fun provideReducerDispatcher(store: Store<A, S>): Next<A> {
-        return { action -> store.reducer.reduce(action, store.state).also(store.stateSubject::onNext) }
+    internal fun provideReducerDispatcher(store: Store<A, S>): Next<A> = with(store) {
+        return { action -> reducer.reduce(action, first).also(stateSubject::onNext) }
     }
 
     /**

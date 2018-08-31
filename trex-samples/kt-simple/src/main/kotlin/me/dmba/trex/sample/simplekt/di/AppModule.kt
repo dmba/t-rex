@@ -7,11 +7,14 @@ import io.reactivex.schedulers.Schedulers
 import me.dmba.trex.TReXSchedulers
 import me.dmba.trex.sample.simplekt.redux.state.AppState
 import me.dmba.trex.sample.simplekt.redux.state.CountState
-import me.dmba.trex.sample.simplekt.redux.state.ErrorState
 import me.dmba.trex.sample.simplekt.redux.state.FavState
 import me.dmba.trex.sample.simplekt.utils.ImmediateScheduler
 
-@Module
+@Module(
+    includes = [
+        AppModuleBindings::class
+    ]
+)
 object AppModule {
 
     @Provides
@@ -23,9 +26,6 @@ object AppModule {
         ),
         favState = FavState(
             isFav = false
-        ),
-        errorState = ErrorState(
-            errors = emptyList()
         )
     )
 
@@ -38,3 +38,6 @@ object AppModule {
     )
 
 }
+
+@Module
+interface AppModuleBindings

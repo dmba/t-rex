@@ -7,9 +7,7 @@ data class AppState(
 
     val countState: CountState,
 
-    val favState: FavState,
-
-    val errorState: ErrorState
+    val favState: FavState
 
 )
 
@@ -28,14 +26,5 @@ data class CountState(
 data class FavState(
 
     val isFav: Boolean
-
-)
-
-/**
- *
- */
-data class ErrorState(
-
-    val errors: List<Throwable>
 
 )
