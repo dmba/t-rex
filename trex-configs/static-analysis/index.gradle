@@ -7,4 +7,10 @@ staticAnalysis {
         maxWarnings = 0
     }
 
+    checkstyle {
+        toolVersion '8.8'
+        exclude project.fileTree('src/test')
+        configFile file('static_analysis/checkstyle-modules.xml')
+    }
+
 }
