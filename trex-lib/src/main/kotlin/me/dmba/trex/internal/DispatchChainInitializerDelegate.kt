@@ -1,16 +1,20 @@
-package me.dmba.trex
+package me.dmba.trex.internal
 
+import me.dmba.trex.Middleware
+import me.dmba.trex.Next
+import me.dmba.trex.Store
+import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
 /**
  *
  */
-internal class DispatchChainInitializerDelegate<A, S> {
+internal class DispatchChainInitializerDelegate<A, S> : ReadOnlyProperty<Store<A, S>, Next<A>> {
 
     /**
      *
      */
-    operator fun getValue(store: Store<A, S>, property: KProperty<*>): (A) -> Unit = with(store) {
+    override operator fun getValue(thisRef: Store<A, S>, property: KProperty<*>): Next<A> = with(thisRef) {
         return middlewares
             .reversed()
             .fold(provideReducerDispatcher(this), provideMiddlewareDispatcher(this))

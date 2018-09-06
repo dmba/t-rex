@@ -5,13 +5,16 @@ import io.reactivex.Scheduler
 /**
  *
  */
-class TReXSchedulers(
+interface SchedulersProvider {
+
     /**
      *
      */
-    val main: Scheduler,
+    val ui: Scheduler
+
     /**
      *
      */
-    val back: Scheduler
-)
+    val background: Scheduler
+
+}

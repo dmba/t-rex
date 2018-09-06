@@ -5,13 +5,15 @@ import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.Subject
+import me.dmba.trex.internal.DispatchChainInitializerDelegate
+import me.dmba.trex.internal.with
 
 /**
  *
  */
 open class Store<A, S> constructor(
 
-    internal val schedulers: TReXSchedulers,
+    internal val schedulers: SchedulersProvider,
 
     initialState: S,
 
