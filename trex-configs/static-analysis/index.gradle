@@ -13,4 +13,10 @@ staticAnalysis {
         configFile file('static_analysis/checkstyle-modules.xml')
     }
 
+    pmd {
+        toolVersion '6.1.0'
+        exclude project.fileTree('src/test')
+        ruleSetFiles = files('static_analysis/pmd-rules.xml')
+    }
+
 }
