@@ -7,7 +7,6 @@ import me.dmba.trex.sample.simplekt.redux.state.ApiAction
 import me.dmba.trex.sample.simplekt.redux.state.AppState
 import me.dmba.trex.sample.simplekt.redux.state.CountAction
 import me.dmba.trex.sample.simplekt.redux.state.FavAction
-import me.dmba.trex.sample.simplekt.utils.plusAssign
 
 /**
  *
@@ -21,10 +20,10 @@ fun main(args: Array<String>) {
 /**
  *
  */
-fun run(component: AppComponent) = with(component) {
+fun run(component: AppComponent): Unit = with(component) {
     val subscriptions = CompositeDisposable()
 
-    subscriptions += store.subscribe(::renderView)
+    store.subscribe(::renderView).let(subscriptions::add)
 
     listOf(
 
@@ -62,4 +61,4 @@ fun run(component: AppComponent) = with(component) {
 /**
  *
  */
-fun renderView(state: AppState) = println("#view: $state")
+fun renderView(state: AppState): Unit = println("#view: $state")

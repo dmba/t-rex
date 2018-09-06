@@ -2,7 +2,6 @@ package me.dmba.trex.sample.simplekt.redux
 
 import dagger.Reusable
 import me.dmba.trex.Store
-import me.dmba.trex.SchedulersProvider
 import me.dmba.trex.sample.simplekt.redux.middleware.ApiMiddleware
 import me.dmba.trex.sample.simplekt.redux.middleware.LoggingMiddleware
 import me.dmba.trex.sample.simplekt.redux.reducers.AppReducer
@@ -16,8 +15,6 @@ import javax.inject.Inject
 @Reusable
 class AppStore @Inject constructor(
 
-    schedulers: SchedulersProvider,
-
     initialState: AppState,
 
     appReducer: AppReducer,
@@ -26,4 +23,14 @@ class AppStore @Inject constructor(
 
     apiMiddleware: ApiMiddleware
 
-) : Store<AppAction, AppState>(schedulers, initialState, appReducer, loggingMiddleware, apiMiddleware)
+) : Store<AppAction, AppState>(
+
+    initialState,
+
+    appReducer,
+
+    loggingMiddleware,
+
+    apiMiddleware
+
+)

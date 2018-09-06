@@ -3,11 +3,9 @@ package me.dmba.trex.sample.simplekt.di
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
-import me.dmba.trex.SchedulersProvider
 import me.dmba.trex.sample.simplekt.redux.state.AppState
 import me.dmba.trex.sample.simplekt.redux.state.CountState
 import me.dmba.trex.sample.simplekt.redux.state.FavState
-import me.dmba.trex.sample.simplekt.utils.ImmediateScheduler
 
 @Module(
     includes = [
@@ -27,17 +25,6 @@ object AppModule {
             isFav = false
         )
     )
-
-    @Provides
-    @Reusable
-    @JvmStatic
-    fun provideSchedulers(): SchedulersProvider = object : SchedulersProvider {
-
-        override val ui = ImmediateScheduler()
-
-        override val background = ImmediateScheduler()
-
-    }
 
 }
 
