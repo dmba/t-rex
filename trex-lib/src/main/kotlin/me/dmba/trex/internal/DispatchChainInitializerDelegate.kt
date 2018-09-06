@@ -24,7 +24,7 @@ internal class DispatchChainInitializerDelegate<A, S> : ReadOnlyProperty<Store<A
      *
      */
     internal fun provideReducerDispatcher(store: Store<A, S>): Next<A> = with(store) {
-        return { action -> reducer.reduce(action, first).also(stateSubject::onNext) }
+        return { action -> reducer.reduce(action, lastState).also(stateSubject::onNext) }
     }
 
     /**

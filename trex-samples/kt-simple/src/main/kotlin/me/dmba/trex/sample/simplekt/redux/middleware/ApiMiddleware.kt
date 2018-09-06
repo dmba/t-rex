@@ -1,6 +1,5 @@
 package me.dmba.trex.sample.simplekt.redux.middleware
 
-import me.dmba.trex.Middleware
 import me.dmba.trex.Next
 import me.dmba.trex.Store
 import me.dmba.trex.sample.simplekt.redux.state.ApiAction
@@ -11,7 +10,7 @@ import javax.inject.Inject
 /**
  *
  */
-class ApiMiddleware @Inject constructor() : Middleware<AppAction, AppState> {
+class ApiMiddleware @Inject constructor() : AppMiddleware {
 
     override fun dispatch(action: AppAction, store: Store<AppAction, AppState>, next: Next<AppAction>) = when (action) {
 

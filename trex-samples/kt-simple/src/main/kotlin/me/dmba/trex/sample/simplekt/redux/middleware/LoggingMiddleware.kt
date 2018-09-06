@@ -1,6 +1,5 @@
 package me.dmba.trex.sample.simplekt.redux.middleware
 
-import me.dmba.trex.Middleware
 import me.dmba.trex.Next
 import me.dmba.trex.Store
 import me.dmba.trex.sample.simplekt.redux.state.AppAction
@@ -10,12 +9,12 @@ import javax.inject.Inject
 /**
  *
  */
-class LoggingMiddleware @Inject constructor() : Middleware<AppAction, AppState> {
+class LoggingMiddleware @Inject constructor() : AppMiddleware {
 
     override fun dispatch(action: AppAction, store: Store<AppAction, AppState>, next: Next<AppAction>) {
-        println("APP : ${Thread.currentThread()} before [$action] >> ${store.first}")
+        println("APP : ${Thread.currentThread()} before [$action] >> ${store.lastState}")
         next(action)
-        println("APP : ${Thread.currentThread()} after  [$action] << ${store.first}")
+        println("APP : ${Thread.currentThread()} after  [$action] << ${store.lastState}")
     }
 
 }

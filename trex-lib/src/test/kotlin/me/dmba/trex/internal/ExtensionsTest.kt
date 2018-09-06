@@ -11,44 +11,50 @@ import org.junit.Test
  * - [Observable.with]
  * - [Comparable.with]
  */
-class RxExtTest {
+class ExtensionsTest {
 
-    private val testSchedulers = TestSchedulersProvider()
+    private val schedulers = TestSchedulersProvider()
 
     @Test
-    fun `extension for Observable should call subscribeOn and observeOn with provided schedulers`() {
+    fun `ext for Observable should call subscribeOn and observeOn with provided schedulers`(): Unit = with(schedulers) {
         // Given
         just("item")
 
             // When
-            .with(testSchedulers)
+            .with(schedulers)
 
             // Then
             .test()
+
+            .assertNoValues()
+            .also { background.triggerActions() }
+            .assertNoValues()
+            .also { ui.triggerActions() }
             .assertComplete()
+
             .assertNoErrors()
             .assertResult("item")
-            .assertOf {
-
-            }
     }
 
     @Test
-    fun `extension for Completable should call subscribeOn and observeOn with provided schedulers`() {
+    fun `ext for Completable should call subscribeOn and observeOn with provided schedulers`(): Unit = with(schedulers) {
         // Given
         complete()
 
             // When
-            .with(testSchedulers)
+            .with(schedulers)
 
             // Then
             .test()
+
+            .assertNoValues()
+            .also { background.triggerActions() }
+            .assertNoValues()
+            .also { ui.triggerActions() }
             .assertComplete()
+
             .assertNoErrors()
             .assertResult()
-            .assertOf {
-
-            }
     }
 
 }

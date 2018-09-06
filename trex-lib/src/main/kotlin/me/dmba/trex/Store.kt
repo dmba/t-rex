@@ -42,7 +42,7 @@ open class Store<A, S> constructor(
     /**
      *
      */
-    val first: S get() = state.blockingFirst()
+    val lastState: S get() = state.blockingFirst()
 
     /**
      *
@@ -55,7 +55,7 @@ open class Store<A, S> constructor(
     /**
      *
      */
-    fun subscribe(onNext: (state: S) -> Unit): Disposable = stateSubject
+    fun subscribe(onNext: OnNext<S>): Disposable = stateSubject
         .with(schedulers)
         .subscribe(onNext)
 
