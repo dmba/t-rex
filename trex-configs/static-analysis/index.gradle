@@ -19,4 +19,9 @@ staticAnalysis {
         ruleSetFiles = files('static_analysis/pmd-rules.xml')
     }
 
+    findbugs {
+        toolVersion '3.0.1'
+        excludeFilter file('static_analysis/findbugs-excludes.xml')
+    }
+
 }

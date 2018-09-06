@@ -1,0 +1,10 @@
+<FindBugsFilter>
+
+    <Match>
+        <Or>
+            <Class name="~.*Test"/>
+            <Class name="~.*Test\$.*"/>
+        </Or>
+    </Match>
+
+</FindBugsFilter>
