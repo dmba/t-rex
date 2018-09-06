@@ -1,6 +1,7 @@
 apply from: configs.kotlin
 apply from: configs.dokka
 apply from: configs.maven_publish
+apply from: configs.static_analysis
 
 dependencies {
     implementation libraries.kotlinStdLib

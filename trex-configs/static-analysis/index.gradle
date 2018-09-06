@@ -1,0 +1,10 @@
+apply plugin: 'com.novoda.static-analysis'
+
+staticAnalysis {
+
+    penalty {
+        maxErrors = 0
+        maxWarnings = 0
+    }
+
+}

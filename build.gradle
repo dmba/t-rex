@@ -20,6 +20,9 @@ buildscript {
 
         // Documentation engine for kotlin, task: dokka
         classpath gradlePlugins.dokka
+
+        // Novoda static analysis plugin
+        classpath gradlePlugins.static_analysis
     }
 }
 

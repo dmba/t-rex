@@ -16,6 +16,8 @@ rootProject.ext {
 
         maven_publish    : configDir('maven-publish'),
 
+        static_analysis  : configDir('static-analysis'),
+
     ]
 
 }

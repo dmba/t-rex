@@ -38,10 +38,11 @@ versions += [
  * Plugins versions
  */
 versions += [
-    kotlin        : '1.2.61',
-    gradleVersions: '0.20.0',
-    buildScan     : '1.16',
-    dokka         : '0.9.17'
+    kotlin         : '1.2.61',
+    gradleVersions : '0.20.0',
+    buildScan      : '1.16',
+    dokka          : '0.9.17',
+    static_analysis: '0.6',
 ]
 
 /**
@@ -65,10 +66,11 @@ versions += [
  * Plugins
  */
 gradlePlugins += [
-    kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
-    buildScan     : "com.gradle:build-scan-plugin:$versions.buildScan",
-    gradleVersions: "com.github.ben-manes:gradle-versions-plugin:$versions.gradleVersions",
-    dokka         : "org.jetbrains.dokka:dokka-gradle-plugin:$versions.dokka"
+    kotlin         : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+    buildScan      : "com.gradle:build-scan-plugin:$versions.buildScan",
+    gradleVersions : "com.github.ben-manes:gradle-versions-plugin:$versions.gradleVersions",
+    dokka          : "org.jetbrains.dokka:dokka-gradle-plugin:$versions.dokka",
+    static_analysis: "com.novoda:gradle-static-analysis-plugin:$versions.static_analysis"
 ]
 
 /**
