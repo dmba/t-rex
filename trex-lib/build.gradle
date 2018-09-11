@@ -4,7 +4,6 @@ apply from: configs.maven_publish
 
 dependencies {
     implementation libraries.kotlinStdLib
-    implementation libraries.rxjava
 
     testImplementation testLibraries.junit
     testImplementation testLibraries.mockito
