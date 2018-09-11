@@ -4,7 +4,6 @@ dependencies {
     implementation project(':trex-lib')
 
     implementation libraries.kotlinStdLib
-    implementation libraries.rxjava
     implementation libraries.dagger
 
     testImplementation testLibraries.junit

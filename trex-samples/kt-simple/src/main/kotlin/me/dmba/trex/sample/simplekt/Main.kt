@@ -29,21 +29,15 @@ fun run(component: AppComponent) = with(component) {
 
         FavAction.MakeFav(),
 
-//        ApiAction.ProduceError,
-
         CountAction.Add(3),
 
         CountAction.Sub(2),
 
         CountAction.Sub(2),
 
-//        ApiAction.ProduceError,
-
         CountAction.Sub(2),
 
         CountAction.Sub(2),
-
-//        ApiAction.ProduceError,
 
         CountAction.Sub(2),
 

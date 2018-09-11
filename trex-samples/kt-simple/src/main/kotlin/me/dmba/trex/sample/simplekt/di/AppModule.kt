@@ -7,11 +7,7 @@ import me.dmba.trex.sample.simplekt.redux.state.AppState
 import me.dmba.trex.sample.simplekt.redux.state.CountState
 import me.dmba.trex.sample.simplekt.redux.state.FavState
 
-@Module(
-    includes = [
-        AppModuleBindings::class
-    ]
-)
+@Module
 object AppModule {
 
     @Provides
@@ -27,6 +23,3 @@ object AppModule {
     )
 
 }
-
-@Module
-interface AppModuleBindings
