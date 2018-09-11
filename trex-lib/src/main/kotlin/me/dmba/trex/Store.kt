@@ -1,17 +1,9 @@
 package me.dmba.trex
 
-import io.reactivex.Completable.fromAction
-import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
-import io.reactivex.subjects.BehaviorSubject
-import io.reactivex.subjects.Subject
-
 /**
  *
  */
 open class Store<A, S> constructor(
-
-    internal val schedulers: TReXSchedulers,
 
     initialState: S,
 
@@ -24,36 +16,39 @@ open class Store<A, S> constructor(
     /**
      *
      */
-    internal val rootDispatcher: Next<A> by DispatchChainInitializerDelegate()
+    internal val subscribers: MutableList<Next<S>> = mutableListOf()
 
     /**
      *
      */
-    internal val stateSubject: Subject<S> = BehaviorSubject.createDefault(initialState)
+    internal val next: Next<A> by lazy {
+        val reducerDispatcher: Next<A> = { state = reducer.reduce(it, state) }
+
+        return@lazy middlewares.foldRight(reducerDispatcher) { middleware, next ->
+            { middleware.dispatch(it, this, next) }
+        }
+    }
 
     /**
      *
      */
-    val state: Observable<S> get() = stateSubject.with(schedulers)
+    var state: S = initialState
+        internal set(newState) {
+            field = newState
+        }
 
     /**
      *
      */
-    val first: S get() = state.blockingFirst()
+    fun dispatch(action: A) = next(action)
 
     /**
      *
      */
-    fun dispatch(action: A): Disposable = fromAction { rootDispatcher(action) }
-        .onErrorComplete()
-        .with(schedulers)
-        .subscribe()
-
-    /**
-     *
-     */
-    fun subscribe(onNext: (state: S) -> Unit): Disposable = stateSubject
-        .with(schedulers)
-        .subscribe(onNext)
+    fun subscribe(onNext: Next<S>): Unsubscribe = {
+        subscribers -= onNext
+    }.also {
+        subscribers += onNext
+    }
 
 }

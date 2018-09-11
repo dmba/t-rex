@@ -3,18 +3,11 @@ package me.dmba.trex.sample.simplekt.di
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
-import io.reactivex.schedulers.Schedulers
-import me.dmba.trex.TReXSchedulers
 import me.dmba.trex.sample.simplekt.redux.state.AppState
 import me.dmba.trex.sample.simplekt.redux.state.CountState
 import me.dmba.trex.sample.simplekt.redux.state.FavState
-import me.dmba.trex.sample.simplekt.utils.ImmediateScheduler
 
-@Module(
-    includes = [
-        AppModuleBindings::class
-    ]
-)
+@Module
 object AppModule {
 
     @Provides
@@ -29,15 +22,4 @@ object AppModule {
         )
     )
 
-    @Provides
-    @Reusable
-    @JvmStatic
-    fun provideSchedulers(): TReXSchedulers = TReXSchedulers(
-        back = ImmediateScheduler(),
-        main = Schedulers.newThread()
-    )
-
 }
-
-@Module
-interface AppModuleBindings
