@@ -1,3 +1,4 @@
 include ':trex-configs'
 include ':trex-lib'
+include ':trex-lib-rxjava2'
 include ':trex-samples:kt-simple'

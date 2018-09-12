@@ -1,0 +1,14 @@
+apply from: configs.kotlin
+apply from: configs.dokka
+apply from: configs.maven_publish
+
+dependencies {
+    implementation project(':trex-lib')
+
+    implementation libraries.kotlinStdLib
+    implementation libraries.rxjava
+
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.mockito
+    testImplementation testLibraries.assertj
+}
