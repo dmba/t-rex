@@ -1,0 +1,16 @@
+apply from: configs.kotlin
+
+dependencies {
+    implementation project(':trex-lib')
+    implementation project(':trex-lib-rxjava2')
+
+    implementation libraries.kotlinStdLib
+    implementation libraries.rxjava
+    implementation libraries.dagger
+
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.mockito
+    testImplementation testLibraries.assertj
+
+    kapt libraries.daggerApt
+}

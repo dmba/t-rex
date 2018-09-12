@@ -1,8 +1,7 @@
 package me.dmba.trex
 
-import io.reactivex.BackpressureStrategy
 import io.reactivex.Completable
-import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject.create
 import io.reactivex.subjects.Subject
 
@@ -30,10 +29,9 @@ open class RxStore<A, S> constructor(
     /**
      *
      */
-    val stream: Flowable<S>
-        get() = stateSubject.hide()
+    val stream: Observable<S>
+        get() = stateSubject
             .with(schedulers)
-            .toFlowable(BackpressureStrategy.LATEST)
 
     /**
      *
