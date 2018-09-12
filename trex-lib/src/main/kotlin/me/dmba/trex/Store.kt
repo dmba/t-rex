@@ -22,9 +22,12 @@ open class Store<A, S> constructor(
      *
      */
     internal val next: Next<A> by lazy {
-        val reducerDispatcher: Next<A> = { state = reducer.reduce(it, state) }
+        val lastDispatcher: Next<A> = {
+            state = reducer.reduce(it, state)
+            subscribers.forEach { it(state) }
+        }
 
-        return@lazy middlewares.foldRight(reducerDispatcher) { middleware, next ->
+        return@lazy middlewares.foldRight(lastDispatcher) { middleware, next ->
             { middleware.dispatch(it, this, next) }
         }
     }
@@ -32,7 +35,7 @@ open class Store<A, S> constructor(
     /**
      *
      */
-    var state: S = initialState
+    open var state: S = initialState
         internal set(newState) {
             field = newState
         }
@@ -40,15 +43,15 @@ open class Store<A, S> constructor(
     /**
      *
      */
-    fun dispatch(action: A) = next(action)
+    open fun dispatch(action: A) = next(action)
 
     /**
      *
      */
-    fun subscribe(onNext: Next<S>): Unsubscribe = {
-        subscribers -= onNext
-    }.also {
+    open fun subscribe(onNext: Next<S>): Unsubscribe {
         subscribers += onNext
+        onNext(state)
+        return { subscribers -= onNext }
     }
 
 }
